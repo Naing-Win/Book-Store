@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="fragments/header :: head(page=#{page.books}, action=#{action.edit})"></th:block>
+</head>
+<body>
+	<header th:replace="fragments/header :: header(#{page.books})"></header>
+	<main class="container">
+		<div class="row">
+			<div class="col-8 offset-2">
+				<form action="#" id="bookEdit" th:action="@{/books/edit/{id}(id=${book.id})}" method="post" th:object="${book}">
+					<div class="card">
+						<div class="card-header bg-dark text-center text-white" th:text="#{action.edit} + ' ' + #{page.books}">Edit Book</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label for="id" th:text="#{book.id}">ID</label>
+								<input type="text" id="id" name="id" class="form-control" th:field="*{id}" placeholder="Enter id." th:classappend="${#fields.hasErrors('id') ? 'is-invalid' : ''}">
+								<div class="invalid-feedback" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></div>
+							</div>
+							<div class="form-group">
+								<label for="title" th:text="#{book.title}">Title</label>
+								<input type="text" id="title" name="title" class="form-control" th:field="*{title}" placeholder="Enter book title." th:classappend="${#fields.hasErrors('title') ? 'is-invalid' : ''}">
+								<div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+							</div>
+							<div class="form-group">
+								<label for="author" th:text="#{book.author}">Author</label>
+								<input type="text" id="author" name="author" class="form-control" th:field="*{author}" placeholder="Enter author name.">
+							</div>
+							<div class="form-group">
+								<label for="edition" th:text="#{book.edition}">Edition</label>
+								<input type="text" id="edition" class="form-control" th:field="*{edition}" placeholder="Enter book edition.">
+							</div>
+							<div class="form-group">
+								<label for="description" th:text="#{book.description}">Description</label>
+								<textarea rows="2" cols="" class="form-control" id="description" th:field="*{description}" placeholder=""></textarea>
+							</div>
+							<div class="form-group">
+								<label for="category" th:text="#{book.category}">Category</label>
+								<select class="form-control" id="category" th:field="*{category.id}">
+									<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}" th:selected="${category.id == book.category.id}">Category</option>
+								</select>
+							</div>
+						</div>
+						<div class="card-footer text-muted text-right">
+							<a href="/books" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-circle-left"></i></a>
+							<button type="reset" class="btn btn-secondary btn-sm"><i class="fas fa-undo"></i></button>
+							<button type="submit" class="btn btn-success btn-sm"><i class="far fa-save"></i></button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

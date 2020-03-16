@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="fragments/header :: head(page=#{page.categories}, action=#{action.list})"></th:block>
+</head>
+<body>
+	<header th:replace="fragments/header :: header(#{page.categories})"></header>
+	<main class="container">
+		<div class="row">
+			<div class="col">
+				<th:block th:if="${not #strings.isEmpty(message)}">
+					<div class="alert alert-success alert-dismissible fade show col-4 offset-4" role="alert">
+						<span th:text="${message}"></span>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</th:block>
+				<a href="/categories/create" class="btn btn-sm btn-primary"><i class="far fa-plus-square"></i></a>
+				<table id="categoryTable" class="table" style="margin-top: 10px;">
+					<thead>
+						<tr>
+							<th class="bg-dark" th:text="#{category.id}">ID</th>
+							<th class="bg-dark" th:text="#{category.name}">Name</th>
+							<th class="bg-dark" th:text="#{category.description}">Description</th>
+							<th class="bg-dark" th:text="#{category.action}">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="category : ${categories}">
+							<td th:text="${category.id}" scope="row"></td>
+							<td th:text="${category.name}"></td>
+							<td th:text="${category.description}"></td>
+							<td class="text-center" style="width: 1px;">
+								<div class="btn-group" role="group">
+									<a th:href="@{/categories/view/{id}(id=${category.id})}" class="btn btn-info btn-sm"><i class="far fa-eye"></i></a>
+									<a th:href="@{/categories/edit/{id}(id=${category.id})}" class="btn btn-success btn-sm ml-2"><i class="far fa-edit"></i></a>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

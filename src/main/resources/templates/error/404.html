@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:bloct th:include="fragments/header :: head(page=#{page.error.404}, action=null)"></th:bloct>
+</head>
+<body>
+	<header th:replace="fragments/header :: header(#{page.error})"></header>
+	<main class="container" role="main">
+		<h1 class="mt-5" th:text="#{page.error.404} + ', ' + #{error.404}">Error 404, page not found.</h1>
+		<a href="/" th:title="#{page.home}" class="btn btn-primary"><i class="fas fa-home"></i><span class="ml-1" th:text="#{back.to.home}">Back to Home</span></a>
+	</main>
+	<footer th:replace="fragments/footer :: footer"></footer>
+	<div th:replace="fragments/footer :: script"></div>
+</body>
+</html>

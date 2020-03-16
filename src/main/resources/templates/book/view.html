@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="fragments/header :: head(page=#{page.books}, action=#{action.view})"></th:block>
+</head>
+<body>
+	<header th:replace="fragments/header :: header(#{page.books})"></header>
+	<main class="container">
+		<div class="row">
+			<div class="col-8 offset-2 mx-auto">
+				<div class="card">
+					<div class="card-header bg-secondary text-center text-white" th:text="#{action.view} + ' ' + #{page.books}">View Book</div>
+					<div class="card-body">
+						<table class="table">
+							<tbody>
+								<tr>
+									<th class="border-0" th:text="#{book.id}">ID</th>
+									<td class="border-0" id="id" th:text="${book.id}">
+								</tr>
+								<tr>
+									<th class="border-0" th:text="#{book.title}">Title</th>
+									<td class="border-0" id="id" th:text="${book.title}">
+								</tr>
+								<tr>
+									<th class="border-0" th:text="#{book.author}">Author</th>
+									<td class="border-0" id="id" th:text="${book.author}">
+								</tr>
+								<tr>
+									<th class="border-0" th:text="#{book.edition}">Edition</th>
+									<td class="border-0" id="id" th:text="${book.edition}">
+								</tr>
+								<tr>
+									<th class="border-0" th:text="#{book.description}">Description</th>
+									<td class="border-0" id="id" th:text="${book.description}">
+								</tr>
+								<tr>
+									<th class="border-0" th:text="#{book.category}">Category</th>
+									<td class="border-0" id="id" th:text="${book.category.name}">
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="card-footer text-muted text-right">
+						<a href="/books" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-circle-left"></i></a>
+						<a th:href="@{/books/edit/{id}(id=${book.id})}" class="btn btn-primary btn-sm"><i class="far fa-edit"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer th:replace="fragments/footer :: footer"></footer>
+	<div th:replace="fragments/footer :: script"></div>
+</body>
+</html>
