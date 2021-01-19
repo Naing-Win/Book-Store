@@ -35,6 +35,12 @@
 									<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}">Category</option>
 								</select>
 							</div>
+							<div class="form-group">
+								<label for="author" th:text="#{book.author}">Author</label>
+								<select class="form-control" id="author" name="author" th:field="*{author.id}">
+									<option th:each="a : ${authors}" th:value="${a.id}" th:text="${a.name}">Author</option>
+								</select>
+							</div>
 						</div>
 						<div class="card-footer text-muted text-right">
 							<button type="submit" class="btn btn-outline-success btn-sm"><i class="far fa-save"></i></button>

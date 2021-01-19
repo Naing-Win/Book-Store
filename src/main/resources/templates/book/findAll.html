@@ -22,7 +22,7 @@
 						<tr>
 							<th class="bg-dark" th:text="#{book.id}">ID</th>
 							<th class="bg-dark" th:text="#{book.title}">Title</th>
-							<!-- <th class="bg-dark" th:text="#{book.author}">Author</th> -->
+							<th class="bg-dark" th:text="#{book.author}">Author</th>
 							<th class="bg-dark" th:text="#{book.edition}">Edition</th>
 							<th class="bg-dark" th:text="#{book.category}">Category</th>
 							<th class="bg-dark" th:text="#{book.action}">Action</th>
@@ -32,7 +32,7 @@
 						<tr th:each="book : ${books}">
 							<td th:text="${book.id}"></td>
 							<td th:text="${book.title}"></td>
-							<!-- <td th:text="${book.author}"></td> -->
+							<td th:text="${book.author.name}"></td>
 							<td th:text="${book.edition}"></td>
 							<td th:text="${book.category.name}"></td>
 							<td class="text-center" style="width: 1px;">

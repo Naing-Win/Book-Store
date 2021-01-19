@@ -40,6 +40,12 @@
 									<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}" th:selected="${category.id == book.category.id}">Category</option>
 								</select>
 							</div>
+							<div class="form-group">
+								<label for="author" th:text="#{book.author}">Author</label>
+								<select class="form-control" id="author" th:field="*{author.id}">
+									<option th:each="a : ${authors}" th:value="${a.id}" th:text="${a.name}" th:selected="${a.id == book.author.id}">Author</option>
+								</select>
+							</div>
 						</div>
 						<div class="card-footer text-muted text-right">
 							<a href="/" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-circle-left"></i></a>

@@ -1,17 +1,12 @@
 package com.nw.spring.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
@@ -41,8 +36,11 @@ public class Book implements Serializable {
 	@JsonManagedReference
 	private Category category;
 	
-	@ManyToMany(mappedBy = "books", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Author> authors;
+	//@ManyToMany(mappedBy = "books", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne
+	@JoinColumn(name = "author_id")
+	@JsonManagedReference
+	private Author author;
 	
 	public long getId() {
 		return id;
@@ -86,6 +84,7 @@ public class Book implements Serializable {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+	/*
 	public List<Author> getAuthors() {
 		return authors;
 	}
@@ -108,4 +107,12 @@ public class Book implements Serializable {
 		}
 		return false;
 	}
+	*/
+	public Author getAuthor() {
+		return author;
+	}
+	public void setAuthor(Author author) {
+		this.author = author;
+	}
+	
 }

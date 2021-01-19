@@ -1,7 +1,5 @@
 package com.nw.spring.controller;
 
-import java.util.Optional;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nw.spring.exception.ResourceNotFoundException;
-import com.nw.spring.models.Author;
 import com.nw.spring.models.Book;
 import com.nw.spring.service.AuthorServiceImpl;
 import com.nw.spring.service.BookServiceImpl;
@@ -38,6 +35,7 @@ public class BookController {
 	@ModelAttribute
 	public void categoriesAttributes(Model model) {
 		model.addAttribute("categories", categoryService.findAll());
+		model.addAttribute("authors", authorService.findAllAuthor());
 	}
 
 	@GetMapping("/create")
@@ -112,6 +110,7 @@ public class BookController {
 		return "redirect:/books";
 	}
 	
+	/*
 	@GetMapping("/addAuthorBook/{id}")
 	public String addAuthor(@PathVariable("id") long id, Model model){
 
@@ -119,37 +118,14 @@ public class BookController {
 		model.addAttribute("book", bookService.findById(id).get());
 		return "authorbook/add-author-book";
 	}
-	
-	/*
-	@GetMapping("/addStudentCourse/{id}")
-	public String addCourse(@PathVariable("id") Long studentId, Model model){
 
-		model.addAttribute("courses", courseService.getAllCourses());
-		model.addAttribute("student", studentService.getStudentById(studentId).get());
-		return "add_student_course";
-	}
-	*/
-	
+	/*
 	@GetMapping("/book/{id}/authors")
 	public String addAuthorAndBook(@RequestParam(value="action", required=true) String action, @PathVariable Long bookId, @RequestParam Long authorId, Model model) {
 		//Optional<Course> course = courseService.getCourseById(courseId);
 		//Optional<Student> student = studentService.getStudentById(id);
 		Optional<Book> book = bookService.findById(bookId);
 		Optional<Author> author = authorService.getAuthorById(authorId);
-
-		/*
-		if (student.isPresent() && action.equalsIgnoreCase("save")) {
-			if (!student.get().hasCourse(course.get())) {
-				student.get().getCourses().add(course.get());
-			}
-			studentService.saveStudent(student.get());
-			model.addAttribute("student", courseService.getCourseById(id));
-			model.addAttribute("courses", courseService.getAllCourses());
-			return "redirect:/students";
-		}
-
-		return "redirect:/students";
-		*/
 		if(book.isPresent() && action.equalsIgnoreCase("save")) {
 			if(!book.get().hasAuthor(author.get())) {
 				book.get().getAuthors().add(author.get());
@@ -161,6 +137,6 @@ public class BookController {
 		}
 		return "redirect:/books";
 	}
-	
+	*/
 
 }

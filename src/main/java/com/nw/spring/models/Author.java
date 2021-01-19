@@ -6,17 +6,16 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Author {
@@ -37,12 +36,14 @@ public class Author {
 	//@NotNull(message = "Please select your date of birth.")
 	private Date dateOfBirth;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(
-			name = "author_book",
-			joinColumns = @JoinColumn(name = "author_id"),
-			inverseJoinColumns = @JoinColumn(name = "book_id")
-			)
+	//@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	//@JoinTable(
+	//		name = "author_book",
+	//		joinColumns = @JoinColumn(name = "author_id"),
+	//		inverseJoinColumns = @JoinColumn(name = "book_id")
+	//		)
+	@OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+	@JsonBackReference
 	private List<Book> books;
 
 	public Author() {
