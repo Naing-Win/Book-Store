@@ -8,7 +8,7 @@
 	<main class="container">
 		<div class="row">
 			<div class="col-8 offset-2 mx-auto">
-				<div class="card">
+				<div class="card mt-2">
 					<div class="card-header bg-secondary text-center text-white" th:text="#{action.view} + ' ' + #{page.books}">View Book</div>
 					<div class="card-body">
 						<table class="table">
@@ -21,10 +21,10 @@
 									<th class="border-0" th:text="#{book.title}">Title</th>
 									<td class="border-0" id="id" th:text="${book.title}">
 								</tr>
-								<tr>
+								<!-- <tr>
 									<th class="border-0" th:text="#{book.author}">Author</th>
 									<td class="border-0" id="id" th:text="${book.author}">
-								</tr>
+								</tr> -->
 								<tr>
 									<th class="border-0" th:text="#{book.edition}">Edition</th>
 									<td class="border-0" id="id" th:text="${book.edition}">
@@ -41,8 +41,8 @@
 						</table>
 					</div>
 					<div class="card-footer text-muted text-right">
-						<a href="/books" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-circle-left"></i></a>
-						<a th:href="@{/books/edit/{id}(id=${book.id})}" class="btn btn-primary btn-sm"><i class="far fa-edit"></i></a>
+						<a href="/" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-circle-left"></i></a>
+						<a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-primary btn-sm"><i class="far fa-edit"></i></a>
 					</div>
 				</div>
 			</div>

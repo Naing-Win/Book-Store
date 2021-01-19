@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.4.RELEASE</version>
+		<version>2.3.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.nw.spring</groupId>
-	<artifactId>nw-springboot-mvc-onetomany</artifactId>
+	<artifactId>nw-book-store</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>nw-springboot-mvc-onetomany</name>
-	<description>Spring Boot MVC OneToMany</description>
+	<name>book-store</name>
+	<description>Book Store</description>
 
 	<properties>
 		<java.version>1.8</java.version>

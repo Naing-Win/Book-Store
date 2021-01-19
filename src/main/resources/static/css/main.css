@@ -5,6 +5,7 @@
 
 .body {
   margin-bottom: 70px;
+  line-height: 2.5px;
 }
 
 .footer {
@@ -15,7 +16,8 @@
   line-height: 60px; /* Vertically center the text there */
   background-color: #f5f5f5;
   text-align: center;
-  margin-top: 20px;
+  height: 100%;
+  top: 0;
 }
 
 body > .container {
@@ -27,8 +29,8 @@ body > .container {
   padding-left: 15px;
 }
 
-.bg-blue {
-    background-color: blue;
+.bg-side {
+    background-color: #815;
 }
 
 #bookTable thead th,
@@ -42,4 +44,12 @@ body > .container {
 #categoryTable tbody th,
 #categoryTable tbody td{
     border-top: 1px solid #FF9800 !important;
+}
+
+.for-navbar {
+	height: 70px ! important;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 }

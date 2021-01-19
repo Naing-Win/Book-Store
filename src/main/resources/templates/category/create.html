@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-8 offset-2">
 				<form action="#" id="categoryForm" th:action="@{/categories/create}" method="post" th:object="${category}">
-					<div class="card">
+					<div class="card mt-2">
 						<div class="card-header bg-dark text-center text-white" th:text="#{action.create} + ' ' + #{page.categories}">Create Category</div>
 						<div class="card-body">
 							<div class="form-group">

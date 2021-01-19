@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:include="fragments/header :: head(page=#{page.authors}, action=#{action.create})">
+</head>
+<body>
+	<header th:replace="fragments/header :: header(#{page.authors})"></header>
+	<main class="container">
+		<div class="row">
+			<div class="col-8 offset-2">
+				<form action="#" id="authorForm" th:action="@{/author/add}" method="post" th:object="${author}">
+					<div class="card">
+						<div class="card-header bg-dark text-center text-white" th:text="#{action.create} + ' ' + #{page.authors}">Create Author</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label for="name" th:text="#{author.name}">Name</label>
+								<input type="text" class="form-control" id="name" name="name" th:field="*{name}" placeholder="Enter your name." th:classappend="${#fields.hasErrors('name') ? 'is-invalid' : ''}">
+								<div class="invalid-feedback" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+							</div>
+							<!-- <div class="form-group">
+								<label for="author" th:text="#{book.author}">Author</label>
+								<input type="text" class="form-control" id="author" name="author" th:field="*{author}" placeholder="Enter author name.">
+							</div> -->
+							<div class="form-group">
+								<label for="phone" th:text="#{author.phone}">Phone</label>
+								<input type="text" class="form-control" id="phone" name="phone" th:field="*{phone}" placeholder="Enter your phone number.">
+							</div>
+							<div class="form-group">
+								<label for="email" th:text="#{author.email}">Email</label>
+								<!-- <textarea rows="2" cols="" class="form-control" id="description" name="description" th:field="*{description}"></textarea> -->
+								<input type="text" class="form-control" id="email" name="email" th:field="*{email}" placeholder="Enter your email.">
+							</div>
+							<div class="form-group">
+								<label for="nRC" th:text="#{author.nRC}">N.R.C</label>
+								<input type="text" class="form-control" id="nRC" name="nRC" th:field="*{nRC}" placeholder="Enter your N.R.C number.">
+							</div>
+							<div class="form-group col-md-8">
+								<label for="dateOfBirth" class="col-form-label">DOB</label> &nbsp;
+								<span th:if="${#fields.hasErrors('dateOfBirth')}" style="color: red;" th:errors="*{dateOfBirth}"></span>
+								<input type="date" th:field="*{dateOfBirth}" class="form-control" id="dateOfBirth">
+							</div>
+							<div class="form-group col-md-8">
+								<label for="address" class="col-form-label">Address</label> &nbsp;
+								<span th:if="${#fields.hasErrors('address')}" style="color: red;" th:errors="*{address}"></span>
+								<textarea rows="3" th:field="*{address}" class="form-control" id="address"></textarea>
+							</div>
+							<!-- <div class="form-group">
+								<label for="category" th:text="#{book.category}">Category</label>
+								<select class="form-control" id="category" name="category" th:field="*{category.id}">
+									<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}">Category</option>
+								</select>
+							</div> -->
+						</div>
+						<div class="card-footer text-muted text-right">
+							<button type="submit" class="btn btn-outline-success btn-sm"><i class="far fa-save"></i></button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</main>
+	<footer th:replace="fragments/footer :: footer"></footer>
+	<div th:replace="fragments/footer :: script"></div>
+</body>
+</html>

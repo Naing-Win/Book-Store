@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<th:block th:include="fragments/header :: head(pag=#{page.books}, action=#{action.list})"></th:block>
+	<th:block th:include="fragments/header :: head(page=#{page.books}, action=#{action.list})"></th:block>
 </head>
 <body>
 	<header th:replace="fragments/header :: header(page=#{page.books})"></header>
@@ -16,13 +16,13 @@
 						</button>
 					</div>
 				</th:block>
-				<a th:href="@{/books/create}" class="btn btn-primary btn-sm"><i class="far fa-plus-square"></i></a>
+				<a th:href="@{/create}" class="btn btn-primary btn-sm mt-2"><i class="far fa-plus-square"> Create</i></a>
 				<table class="table" id="bookTable" style="margin-top: 10px;">
 					<thead>
 						<tr>
 							<th class="bg-dark" th:text="#{book.id}">ID</th>
 							<th class="bg-dark" th:text="#{book.title}">Title</th>
-							<th class="bg-dark" th:text="#{book.author}">Author</th>
+							<!-- <th class="bg-dark" th:text="#{book.author}">Author</th> -->
 							<th class="bg-dark" th:text="#{book.edition}">Edition</th>
 							<th class="bg-dark" th:text="#{book.category}">Category</th>
 							<th class="bg-dark" th:text="#{book.action}">Action</th>
@@ -32,14 +32,14 @@
 						<tr th:each="book : ${books}">
 							<td th:text="${book.id}"></td>
 							<td th:text="${book.title}"></td>
-							<td th:text="${book.author}"></td>
+							<!-- <td th:text="${book.author}"></td> -->
 							<td th:text="${book.edition}"></td>
 							<td th:text="${book.category.name}"></td>
 							<td class="text-center" style="width: 1px;">
 								<div class="btn-group" role="group" aria-label="Action Buttons">
-									<a th:href="@{/books/view/{id}(id=${book.id})}" class="btn btn-info btn-sm"><i class="far fa-eye"></i></a>
-									<a th:href="@{/books/edit/{id}(id=${book.id})}" class="btn btn-success btn-sm ml-2"><i class="far fa-edit"></i></a>
-									<a th:href="@{/books/delete/{id}(id=${book.id})}" class="btn btn-danger btn-sm ml-2"><i class="far fa-trash-alt"></i></a>
+									<a th:href="@{/view/{id}(id=${book.id})}" class="btn btn-info btn-sm"><i class="far fa-eye"></i></a>
+									<a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-success btn-sm ml-2"><i class="far fa-edit"></i></a>
+									<a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger btn-sm ml-2"><i class="far fa-trash-alt"></i></a>
 									<!-- <form action="#" method="post" th:action="@{/books/delete/{id}(id=${book.id})}">
 										
 									</form> -->

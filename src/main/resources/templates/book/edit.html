@@ -8,7 +8,7 @@
 	<main class="container">
 		<div class="row">
 			<div class="col-8 offset-2">
-				<form action="#" id="bookEdit" th:action="@{/books/edit/{id}(id=${book.id})}" method="post" th:object="${book}">
+				<form action="#" id="bookEdit" th:action="@{/edit/{id}(id=${book.id})}" method="post" th:object="${book}">
 					<div class="card">
 						<div class="card-header bg-dark text-center text-white" th:text="#{action.edit} + ' ' + #{page.books}">Edit Book</div>
 						<div class="card-body">
@@ -22,10 +22,10 @@
 								<input type="text" id="title" name="title" class="form-control" th:field="*{title}" placeholder="Enter book title." th:classappend="${#fields.hasErrors('title') ? 'is-invalid' : ''}">
 								<div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
 							</div>
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label for="author" th:text="#{book.author}">Author</label>
 								<input type="text" id="author" name="author" class="form-control" th:field="*{author}" placeholder="Enter author name.">
-							</div>
+							</div> -->
 							<div class="form-group">
 								<label for="edition" th:text="#{book.edition}">Edition</label>
 								<input type="text" id="edition" class="form-control" th:field="*{edition}" placeholder="Enter book edition.">
@@ -42,7 +42,7 @@
 							</div>
 						</div>
 						<div class="card-footer text-muted text-right">
-							<a href="/books" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-circle-left"></i></a>
+							<a href="/" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-circle-left"></i></a>
 							<button type="reset" class="btn btn-secondary btn-sm"><i class="fas fa-undo"></i></button>
 							<button type="submit" class="btn btn-success btn-sm"><i class="far fa-save"></i></button>
 						</div>

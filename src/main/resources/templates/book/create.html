@@ -8,7 +8,7 @@
 	<main class="container">
 		<div class="row">
 			<div class="col-8 offset-2">
-				<form action="#" id="bookForm" th:action="@{/books/create}" method="post" th:object="${book}">
+				<form action="#" id="bookForm" th:action="@{/create}" method="post" th:object="${book}">
 					<div class="card">
 						<div class="card-header bg-dark text-center text-white" th:text="#{action.create} + ' ' + #{page.books}">Create Book</div>
 						<div class="card-body">
@@ -17,10 +17,10 @@
 								<input type="text" class="form-control" id="title" name="title" th:field="*{title}" placeholder="Enter Book Title." th:classappend="${#fields.hasErrors('title') ? 'is-invalid' : ''}">
 								<div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
 							</div>
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label for="author" th:text="#{book.author}">Author</label>
 								<input type="text" class="form-control" id="author" name="author" th:field="*{author}" placeholder="Enter author name.">
-							</div>
+							</div> -->
 							<div class="form-group">
 								<label for="edition" th:text="#{book.edition}">Edition</label>
 								<input type="text" class="form-control" id="edition" name="edition" th:field="*{edition}" placeholder="Enter book edition.">

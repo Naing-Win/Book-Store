@@ -3,20 +3,55 @@
 <head>
 <meta charset="UTF-8">
 	<th:block th:include="fragments/header :: head(page=#{page.home}, action=null)"></th:block>
-	<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-	crossorigin="anonymous">
-	
-	<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
-	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
-	crossorigin="anonymous">
 </head>
 <body>
 	<header th:replace="fragments/header :: header(#{page.home})"></header>
 	<main role="main" class="container">
-		<h1 class="mt-5" th:text="#{app.name}">Spring Boot JPA One-To-Many App</h1>
+		<h4 class="mt-2" th:text="#{app.name}" th:href="@{/books}">BOOK STORE</h4>
+		<div class="row">
+			<div class="col">
+				<th:block th:if="${not #strings.isEmpty(message)}">
+					<div class="alert alert-success alert-dismissible fade show col-4 offset-4" role="alert">
+						<span th:text="${message}"></span>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</th:block>
+				<a th:href="@{/books/create}" class="btn btn-primary btn-sm"><i class="far fa-plus-square"></i></a>
+				<table class="table" id="bookTable" style="margin-top: 10px;">
+					<thead>
+						<tr>
+							<th class="bg-dark" th:text="#{book.id}">ID</th>
+							<th class="bg-dark" th:text="#{book.title}">Title</th>
+							<th class="bg-dark" th:text="#{book.author}">Author</th>
+							<th class="bg-dark" th:text="#{book.edition}">Edition</th>
+							<th class="bg-dark" th:text="#{book.category}">Category</th>
+							<th class="bg-dark" th:text="#{book.action}">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="book : ${books}">
+							<td th:text="${book.id}"></td>
+							<td th:text="${book.title}"></td>
+							<td th:text="${book.author}"></td>
+							<td th:text="${book.edition}"></td>
+							<td th:text="${book.category.name}"></td>
+							<td class="text-center" style="width: 1px;">
+								<div class="btn-group" role="group" aria-label="Action Buttons">
+									<a th:href="@{/books/view/{id}(id=${book.id})}" class="btn btn-info btn-sm"><i class="far fa-eye"></i></a>
+									<a th:href="@{/books/edit/{id}(id=${book.id})}" class="btn btn-success btn-sm ml-2"><i class="far fa-edit"></i></a>
+									<a th:href="@{/books/delete/{id}(id=${book.id})}" class="btn btn-danger btn-sm ml-2"><i class="far fa-trash-alt"></i></a>
+									<!-- <form action="#" method="post" th:action="@{/books/delete/{id}(id=${book.id})}">
+										
+									</form> -->
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</main>
 	<footer th:replace="fragments/footer :: footer"></footer>
 	<div th:replace="fragments/footer :: script"></div>
