@@ -3,6 +3,8 @@ package com.nw.spring.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -45,7 +47,7 @@ public class AuthorController {
 	}
 	
 	@PostMapping("/author/add")
-	public String createAuthor(Author author, BindingResult result) {
+	public String createAuthor(@Valid Author author, BindingResult result) {
 		if(result.hasErrors()) {
 			return "author/add-author";
 		}
