@@ -82,9 +82,10 @@ public class BookController {
 		bk.setDescription(book.getDescription());
 		bk.setEdition(book.getEdition());
 		bk.setTitle(book.getTitle());
+		bk.setAuthor(book.getAuthor());
 		bookService.save(bk);
 		redirectAttributes.addFlashAttribute("message", "Book with ID " + book.getId() + " has been updated!");
-		return "redirect:/books";
+		return "redirect:/";
 	}
 
 	@GetMapping("/view/{id}")
@@ -107,7 +108,7 @@ public class BookController {
 		//Book book = bookService.findById(id).orElseThrow(() -> new ResourceNotFoundException());
 		bookService.delete(id);
 		redirectAttributes.addFlashAttribute("message", "Book with ID " + id + " has been deleted.");
-		return "redirect:/books";
+		return "redirect:/";
 	}
 	
 	/*
