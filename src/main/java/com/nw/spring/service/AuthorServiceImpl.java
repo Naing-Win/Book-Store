@@ -11,18 +11,18 @@ import com.nw.spring.repository.AuthorRepository;
 
 @Service
 public class AuthorServiceImpl implements AuthorService {
-	
+
 	@Autowired
 	private AuthorRepository authorRepository;
-	
+
 	/*
 	 * @Autowired private BookRepository bookRepository;
 	 */
 	@Override
 	public void save(Author author) {
 		// TODO Auto-generated method stub
-		//Optional<Book> b = bookRepository.findById(book.getId());
-		
+		// Optional<Book> b = bookRepository.findById(book.getId());
+
 		authorRepository.save(author);
 	}
 
@@ -31,10 +31,15 @@ public class AuthorServiceImpl implements AuthorService {
 		// TODO Auto-generated method stub
 		return authorRepository.findAll();
 	}
-	
-	 @Override
-	    public Optional<Author> getAuthorById(long id) {
-	        return authorRepository.findById(id);
-	    }
+
+	@Override
+	public Optional<Author> getAuthorById(long id) {
+		return authorRepository.findById(id);
+	}
+
+	public Author findById(long id) {
+		// TODO Auto-generated method stub
+		return authorRepository.getOne(id);
+	}
 
 }

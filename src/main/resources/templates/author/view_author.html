@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="fragments/header :: head(page=#{page.authors}, action=#{action.view})"></th:block>
+</head>
+<body>
+	<header th:replace="fragments/header :: header(#{page.authors})"></header>
+	<main class="container">
+		<div class="row">
+			<div class="col-8 mx-auto">
+				<div class="card mt-2">
+					<div class="card-header bg-secondary text-white text-center" th:text="#{action.view} + ' ' + #{page.authors}">Detail Author</div>
+					<div class="card-body">
+						<table class="table">
+							<tbody>
+								<tr>
+									<th class="border-0" th:text="#{author.id}">ID</th>
+									<td class="border-0" id="id" th:text="${author.id}">
+								</tr>
+								<tr>
+									<th class="border-0" th:text="#{author.name}">Name</th>
+									<td class="border-0" id="name" th:text="${author.name}">
+								</tr>
+								<tr>
+									<th class="border-0" th:text="#{author.email}">Email</th>
+									<td class="border-0" id="email" th:text="${author.email}">
+								</tr>
+								<tr>
+									<th class="border-0" th:text="#{author.nrc}">N.R.C</th>
+									<td class="border-0" id="nRC" th:text="${author.nRC}">
+								</tr>
+								<tr>
+									<th class="border-0" th:text="#{author.dob}">D.O.B</th>
+									<td class="border-0" id="dateOfBirth" th:text="${author.dateOfBirth}">
+								</tr>
+								<tr>
+									<th class="border-0" th:text="#{author.address}">Address</th>
+									<td class="border-0" id="address" th:text="${author.address}">
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="card-footer text-right">
+						<a th:href="@{/authors}" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-circle-left">Back</i></a>
+						<a th:href="@{/author/edit/{id}(id=${author.id})}" class="btn btn-primary btn-sm"><i class="fa fa-edit">Edit</i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

@@ -12,7 +12,7 @@
 	<main class="container">
 		<div class="row">
 			<div class="col-8 offset-2">
-				<form action="#" id="authorForm" th:action="@{/author/add}" method="post" th:object="${author}">
+				<form action="#" id="authorForm" th:action="${author.id} == 0 ? @{/author/add} : @{/author/edit/{id}(id=${author.id})}" method="post" th:object="${author}">
 					<div class="card">
 						<div class="card-header bg-dark text-center text-white" th:text="#{action.create} + ' ' + #{page.authors}">Create Author</div>
 						<div class="card-body">
