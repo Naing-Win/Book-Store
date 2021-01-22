@@ -37,6 +37,16 @@ public class BookController {
 		model.addAttribute("categories", categoryService.findAll());
 		model.addAttribute("authors", authorService.findAllAuthor());
 	}
+	
+	@GetMapping("/")
+	public String findAll(Model model, @ModelAttribute("message") String message, @RequestParam(value = "category", required = false) String category) {
+		if (category != null && !category.isEmpty()) {
+			model.addAttribute("books", bookService.findByCategoryName(category));
+		} else {
+			model.addAttribute("books", bookService.findAll());
+		}
+		return "book/findAll";
+	}
 
 	@GetMapping("/create")
 	public String createBook(Book book, Model model) {
@@ -51,16 +61,6 @@ public class BookController {
 		bookService.save(book);
 		redirectAttributes.addFlashAttribute("message", "Book has been created.");
 		return "redirect:/";
-	}
-
-	@GetMapping("/")
-	public String findAll(Model model, @ModelAttribute("message") String message, @RequestParam(value = "category", required = false) String category) {
-		if (category != null && !category.isEmpty()) {
-			model.addAttribute("books", bookService.findByCategoryName(category));
-		} else {
-			model.addAttribute("books", bookService.findAll());
-		}
-		return "book/findAll";
 	}
 
 	@GetMapping("/edit/{id}")

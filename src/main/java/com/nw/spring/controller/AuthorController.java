@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nw.spring.models.Author;
 import com.nw.spring.service.AuthorServiceImpl;
 
 @Controller
+@RequestMapping("/author")
 public class AuthorController {
 
 	/*
@@ -34,46 +36,46 @@ public class AuthorController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));
 	}
 	
-	@GetMapping("/authors")
+	@GetMapping("/list")
 	public String getAllAuthor(Model model) {
 		model.addAttribute("authors", authorService.findAllAuthor());
 		//model.addAttribute("books", bookService.findAll());
 		return "author/find-all";
 	}
 	
-	@GetMapping("/author/add")
+	@GetMapping("/showForm")
 	public String showAuthorForm(Model model) {
 		model.addAttribute("author", new Author());
 		return "author/add-author";
 	}
 	
-	@PostMapping("/author/add")
+	@PostMapping("/add")
 	public String createAuthor(@Valid Author author, BindingResult result) {
 		if(result.hasErrors()) {
 			return "author/add-author";
 		}
 		authorService.save(author);
-		return "redirect:/authors";
+		return "redirect:/author/list";
 	}
 	
-	@GetMapping("/author/view/{id}")
-	public String viewAuthorById(@PathVariable long id, Model model) {
+	@GetMapping("/view/{id}")
+	public String viewAuthorById(@PathVariable ("id") long id, Model model) {
 		Author author = authorService.findById(id);
 		model.addAttribute("author", author);
 		return "author/view_author";
 	}
 	
-	@GetMapping("/author/edit/{id}")
-	public String editAuthorById(@PathVariable long id, Model model) {
+	@GetMapping("/edit/{id}")
+	public String editAuthorById(@PathVariable ("id") long id, Model model) {
 		Author author = authorService.findById(id);
 		model.addAttribute("author", author);
-		return "author/add-author";
+		return "author/edit_author";
 	}
 	
-	@PostMapping("/author/edit/{id}")
-	public String editProcessAuthorById(@PathVariable long id, @Valid Author author, BindingResult result) {
+	@PostMapping("/update/{id}")
+	public String editProcessAuthorById(@PathVariable ("id") long id, @Valid Author author, BindingResult result) {
 		if (result.hasErrors()) {
-			return "author/add-author";
+			return "author/edit_author";
 		}
 		Author au = authorService.findById(id);
 		au.setId(author.getId());
@@ -84,6 +86,6 @@ public class AuthorController {
 		au.setnRC(author.getnRC());
 		au.setPhone(author.getPhone());
 		authorService.save(au);
-		return "redirect:/authors";
+		return "redirect:/author/list";
 	}
 }
