@@ -42,9 +42,9 @@
 					</div>
 					<div class="card-footer text-muted text-right">
 						<div class="form-row float-right">
-							<a href="/" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-circle-left"></i></a>
+							<a href="/" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-circle-left"></i> Back</a>
 							<form action="#" th:action="@{/delete/{id}(id=${book.id})}" method="post">
-								<button type="submit" class="btn btn-danger btn-sm ml-1"><i class="far fa-trash-alt"></i></button>
+								<button type="submit" class="btn btn-danger btn-sm ml-1"><i class="far fa-trash-alt"></i>Delete</button>
 							</form>
 						</div>
 					</div>
@@ -53,6 +53,5 @@
 		</div>
 	</main>
 	<footer th:replace="fragments/footer :: footer"></footer>
-	<div th:replace="fragments/footer :: script"></div>
 </body>
 </html>

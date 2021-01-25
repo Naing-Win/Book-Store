@@ -2,10 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <th:block th:include="fragments/header :: head(page=#{page.authors}, action=#{action.create})">
-<link rel="stylesheet" type="text/css"
-		th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" />
-	<link rel="stylesheet" type="text/css"
-		th:href="@{/webjars/font-awesome/5.14.0/css/all.css}" />
 </head>
 <body>
 	<header th:replace="fragments/header :: header(#{page.authors})"></header>
@@ -55,10 +51,5 @@
 		</div>
 	</main>
 	<footer th:replace="fragments/footer :: footer"></footer>
-	<div th:replace="fragments/footer :: script"></div>
-	<script src="/webjars/jquery/3.4.1/jquery.min.js"
-		type="text/javascript"></script>
-	<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"
-		type="text/javascript"></script>
 </body>
 </html>
