@@ -1,1 +1,0 @@
-web: $JAVA_OPTS -Dserver.port=$PORT -jar target/nw-book-store-1.0.jar
