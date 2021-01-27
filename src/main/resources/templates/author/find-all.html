@@ -21,15 +21,14 @@
 				<table class="table" id="bookTable" style="margin-top: 10px;">
 					<thead>
 						<tr>
-							<th class="bg-dark">ID</th>
-							<th class="bg-dark">Name</th>
-							<!-- <th class="bg-dark" th:text="#{book.author}">Author</th> -->
-							<th class="bg-dark">Phone</th>
-							<th class="bg-dark">Email</th>
-							<th class="bg-dark">N.R.C</th>
-							<th class="bg-dark">D.O.B</th>
-							<th class="bg-dark">Address</th>
-							<th class="bg-dark">Action</th>
+							<th class="bg-secondary">ID</th>
+							<th class="bg-secondary">Name</th>
+							<th class="bg-secondary">Phone</th>
+							<th class="bg-secondary">Email</th>
+							<th class="bg-secondary">N.R.C</th>
+							<th class="bg-secondary">D.O.B</th>
+							<th class="bg-secondary">Address</th>
+							<th class="bg-secondary">Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -45,10 +44,7 @@
 								<div class="btn-group" role="group" aria-label="Action Buttons">
 									<a class="btn btn-info btn-sm" th:href="@{/author/view/{id}(id=${a.id})}"><i class="far fa-eye"></i></a>
 									<a class="btn btn-success btn-sm ml-2" th:href="@{/author/edit/{id}(id=${a.id})}"><i class="far fa-edit"></i></a>
-									<a class="btn btn-danger btn-sm ml-2"><i class="far fa-trash-alt"></i></a>
-									<!-- <form action="#" method="post" th:action="@{/books/delete/{id}(id=${book.id})}">
-										
-									</form> -->
+									<!-- <a class="btn btn-danger btn-sm ml-2"><i class="far fa-trash-alt"></i></a> -->
 								</div>
 							</td>
 						</tr>

@@ -10,7 +10,7 @@
                 <div class="col-8 offset-2">
                     <form id="categoryForm" th:action="@{/categories/edit/{id}(id=${category.id})}" method="post" th:object="${category}">
                         <div class="card">
-                            <div class="card-header bg-dark text-center text-white" th:text="#{action.edit} + ' ' + #{page.categories}">Edit Category</div>
+                            <div class="card-header bg-secondary text-center text-white" th:text="#{action.edit} + ' ' + #{page.categories}">Edit Category</div>
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="id" th:text="#{category.id}">ID</label>
@@ -27,10 +27,10 @@
                                     <textarea class="form-control" id="description" th:field="*{description}" rows="2"></textarea>
                                 </div>
                             </div>
-                            <div class="card-footer text-muted text-right">
-                                <a href="/categories" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-circle-left"></i>Back</a>
-                                <button type="reset" class="btn btn-secondary btn-sm"><i class="fas fa-undo"></i>Reset</button>
-                                <button type="submit" class="btn btn-primary btn-sm"><i class="far fa-save"></i>Save</button>
+                            <div class="card-footer bg-secondary text-muted text-right">
+                                <a href="/categories" class="btn btn-info btn-sm"><i class="fas fa-chevron-circle-left"></i>Back</a>
+                                <button type="reset" class="btn btn-warning btn-sm"><i class="fas fa-undo"></i>Reset</button>
+                                <button type="submit" class="btn btn-success btn-sm"><i class="far fa-edit"></i> Edit</button>
                             </div>
                         </div>
                     </form>

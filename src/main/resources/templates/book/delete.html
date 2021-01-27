@@ -9,7 +9,7 @@
 		<div class="row">
 			<div class="col-8 offset-2 mx-auto">
 				<div class="card">
-					<div class="card-header bg-dark text-center text-white" th:text="#{action.delete} + ' ' + #{page.books}">Delete Book</div>
+					<div class="card-header bg-secondary text-center text-white" th:text="#{action.delete} + ' ' + #{page.books}">Delete Book</div>
 					<div class="card-body">
 						<table class="table">
 							<tbody>
@@ -21,10 +21,10 @@
 									<th class="border-0" scope="row">Title</th>
 									<td class="border-0" id="title" th:text="${book.title}"></td>
 								</tr>
-								<!-- <tr>
+								<tr>
 									<th class="border-0" scope="row">Author</th>
-									<td class="border-0" id="author" th:text="${book.author}"></td>
-								</tr> -->
+									<td class="border-0" id="author" th:text="${book.author.name}"></td>
+								</tr>
 								<tr>
 									<th class="border-0" scope="row">Edition</th>
 									<td class="border-0" id="edition" th:text="${book.edition}"></td>
@@ -40,9 +40,9 @@
 							</tbody>
 						</table>
 					</div>
-					<div class="card-footer text-muted text-right">
+					<div class="card-footer bg-secondary text-muted text-right">
 						<div class="form-row float-right">
-							<a href="/" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-circle-left"></i> Back</a>
+							<a href="/" class="btn btn-info btn-sm"><i class="fas fa-chevron-circle-left"></i> Back</a>
 							<form action="#" th:action="@{/delete/{id}(id=${book.id})}" method="post">
 								<button type="submit" class="btn btn-danger btn-sm ml-1"><i class="far fa-trash-alt"></i>Delete</button>
 							</form>

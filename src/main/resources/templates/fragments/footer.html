@@ -12,7 +12,7 @@
 	</div>
 	<footer class="footer" th:fragment="footer">
 		<div class="container">
-			<span class="text-muted" th:text="${#messages.msg('copyright', #dates.format(#dates.createNow(), 'yyyy'))}">Copyright &copy; 2020 Naing Win | All Rights Reserved.</span>
+			<span th:text="${#messages.msg('copyright', #dates.format(#dates.createNow(), 'yyyy'))}">Copyright &copy; 2020 Naing Win | All Rights Reserved.</span>
 		</div>
 	</footer>
 </body>

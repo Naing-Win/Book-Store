@@ -9,7 +9,7 @@
 		<div class="row">
 			<div class="col-8 offset-2 mx-auto">
 				<div class="card">
-					<div class="card-header bg-info text-center text-white" th:text="#{action.view} + ' ' + #{page.categories}">View Category</div>
+					<div class="card-header bg-secondary text-center text-white" th:text="#{action.view} + ' ' + #{page.categories}">View Category</div>
 						<div class="card-body">
 							<table class="table">
 								<tbody>
@@ -28,10 +28,10 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="card-footer text-muted text-right">
-							<a href="/categories" class="btn btn-secondary btn-sm"><i class="fas fa-chevron-circle-left"></i> Back</a>
+						<div class="card-footer bg-secondary text-muted text-right">
+							<a href="/categories" class="btn btn-info btn-sm"><i class="fas fa-chevron-circle-left"></i> Back</a>
 							<a th:href="@{/categories/edit/{id}(id=${category.id})}">
-                                <button type="submit" class="btn btn-primary btn-sm"><i class="far fa-edit"></i> Edit</button>
+                                <button type="submit" class="btn btn-success btn-sm"><i class="far fa-edit"></i> Edit</button>
                             </a>
 						</div>
 				</div>
