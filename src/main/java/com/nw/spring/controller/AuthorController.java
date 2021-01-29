@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nw.spring.models.Author;
 import com.nw.spring.service.AuthorServiceImpl;
@@ -50,11 +51,12 @@ public class AuthorController {
 	}
 	
 	@PostMapping("/add")
-	public String createAuthor(@Valid Author author, BindingResult result) {
+	public String createAuthor(@Valid Author author, BindingResult result, RedirectAttributes redirectAttributes) {
 		if(result.hasErrors()) {
 			return "author/add-author";
 		}
 		authorService.save(author);
+		redirectAttributes.addFlashAttribute("message", "Author have been created.");
 		return "redirect:/author/list";
 	}
 	
@@ -73,7 +75,7 @@ public class AuthorController {
 	}
 	
 	@PostMapping("/update/{id}")
-	public String editProcessAuthorById(@PathVariable ("id") long id, @Valid Author author, BindingResult result) {
+	public String editProcessAuthorById(@PathVariable ("id") long id, @Valid Author author, BindingResult result, RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()) {
 			return "author/edit_author";
 		}
@@ -86,6 +88,7 @@ public class AuthorController {
 		au.setnRC(author.getnRC());
 		au.setPhone(author.getPhone());
 		authorService.save(au);
+		redirectAttributes.addFlashAttribute("message", "Author with ID " + id + " have been updated.");
 		return "redirect:/author/list";
 	}
 }

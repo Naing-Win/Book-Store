@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -19,44 +20,50 @@ public class Book implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	@NotBlank(message = "Title is required.")
+
+	@NotBlank
 	private String title;
+
+	@NotBlank
 	private String edition;
-	//private String author;
+
+	@NotBlank
 	private String description;
-	//private LocalDateTime createdAt;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "category_id")
-	@JsonManagedReference
+	@NotNull(message = "Please select one category.")
 	private Category category;
-	
-	//@ManyToMany(mappedBy = "books", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
 	@ManyToOne
 	@JoinColumn(name = "author_id")
-	@JsonManagedReference
+	@NotNull(message = "Please select one author.")
 	private Author author;
-	
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getEdition() {
 		return edition;
 	}
+
 	public void setEdition(String edition) {
 		this.edition = edition;
 	}
@@ -68,51 +75,39 @@ public class Book implements Serializable {
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	/*public LocalDateTime getCreatedAt() {
-		return createdAt;
-	}
-	public void setCreatedAt(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
-	}
-	*/
+
+	/*
+	 * public LocalDateTime getCreatedAt() { return createdAt; } public void
+	 * setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+	 */
 	public Category getCategory() {
 		return category;
 	}
+
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
 	/*
-	public List<Author> getAuthors() {
-		return authors;
-	}
-	public void setAuthors(List<Author> authors) {
-		this.authors = authors;
-	}
-	
-	public void addAuthor(Author author) {
-		if(authors == null) {
-			authors = new ArrayList<>();
-		}
-		authors.add(author);
-	}
-	
-	public boolean hasAuthor(Author author) {
-		for(Author a : getAuthors()) {
-			if(a.getId() == author.getId()) {
-				return true;
-			}
-		}
-		return false;
-	}
-	*/
+	 * public List<Author> getAuthors() { return authors; } public void
+	 * setAuthors(List<Author> authors) { this.authors = authors; }
+	 * 
+	 * public void addAuthor(Author author) { if(authors == null) { authors = new
+	 * ArrayList<>(); } authors.add(author); }
+	 * 
+	 * public boolean hasAuthor(Author author) { for(Author a : getAuthors()) {
+	 * if(a.getId() == author.getId()) { return true; } } return false; }
+	 */
 	public Author getAuthor() {
 		return author;
 	}
+
 	public void setAuthor(Author author) {
 		this.author = author;
 	}
-	
+
 }

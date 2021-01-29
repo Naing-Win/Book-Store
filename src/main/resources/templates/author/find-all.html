@@ -8,14 +8,14 @@
 	<main class="container">
 		<div class="row">
 			<div class="col">
-				<!-- <th:block th:if="${not #strings.isEmpty(message)}">
+				<th:block th:if="${not #strings.isEmpty(message)}">
 					<div class="alert alert-success alert-dismissible fade show col-4 offset-4" role="alert">
 						<span th:text="${message}"></span>
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-				</th:block> -->
+				</th:block>
 				<a th:href="@{/author/showForm}" class="btn btn-primary btn-sm mt-2"><i class="far fa-plus-square"> Create</i></a>
 				<h3>Authors</h3>
 				<table class="table" id="bookTable" style="margin-top: 10px;">

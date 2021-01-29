@@ -19,26 +19,28 @@
 							</div>
 							<div class="form-group">
 								<label>Phone</label>
-								<input type="text" class="form-control" id="phone" name="phone" th:field="*{phone}" placeholder="Enter your phone number.">
+								<input type="text" class="form-control" id="phone" name="phone" th:field="*{phone}" placeholder="Enter your phone number." th:classappend="${#fields.hasErrors('phone') ? 'is-invalid' : ''}">
+								<div class="invalid-feedback" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" style="color: red;"></div>
 							</div>
 							<div class="form-group">
 								<label>Email</label>
-								<!-- <textarea rows="2" cols="" class="form-control" id="description" name="description" th:field="*{description}"></textarea> -->
-								<input type="text" class="form-control" id="email" name="email" th:field="*{email}" placeholder="Enter your email.">
+								<input type="text" class="form-control" id="email" name="email" th:field="*{email}" placeholder="Enter your email." th:classappend="${#fields.hasErrors('email') ? 'is-invalid' : ''}">
+								<span class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red;"></span>
 							</div>
 							<div class="form-group">
 								<label>N.R.C</label>
-								<input type="text" class="form-control" id="nRC" name="nRC" th:field="*{nRC}" placeholder="Enter your N.R.C number.">
+								<input type="text" class="form-control" id="nRC" name="nRC" th:field="*{nRC}" placeholder="Enter your N.R.C number." th:classappend="${#fields.hasErrors('nRC') ? 'is-invalid' : ''}">
+								<span class="invalid-feedback" th:if="${#fields.hasErrors('nRC')}" th:errors="*{nRC}" style="color: red;"></span>
 							</div>
 							<div class="form-group">
 								<label>DOB</label>
-								<span th:if="${#fields.hasErrors('dateOfBirth')}" style="color: red;" th:errors="*{dateOfBirth}"></span>
-								<input type="date" th:field="*{dateOfBirth}" class="form-control" id="dateOfBirth">
+								<input type="date" th:field="*{dateOfBirth}" class="form-control" id="dateOfBirth" th:classappend="${#fields.hasErrors('dateOfBirth') ? 'is-invalid' : ''}">
+								<span class="invalid-feedback" th:if="${#fields.hasErrors('dateOfBirth')}" style="color: red;" th:errors="*{dateOfBirth}"></span>
 							</div>
 							<div class="form-group">
 								<label>Address</label>
-								<span th:if="${#fields.hasErrors('address')}" style="color: red;" th:errors="*{address}"></span>
-								<textarea rows="3" th:field="*{address}" class="form-control" id="address"></textarea>
+								<textarea rows="3" th:field="*{address}" class="form-control" id="address" th:classappend="${#fields.hasErrors('address') ? 'is-invalid' : ''}"></textarea>
+								<span class="invalid-feedback" th:if="${#fields.hasErrors('address')}" th:errors="*{address}" style="color: red;"></span>
 							</div>
 						</div>
 						<div class="card-footer bg-secondary text-muted text-right">

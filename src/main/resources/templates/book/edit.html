@@ -28,11 +28,13 @@
 							</div> -->
 							<div class="form-group">
 								<label for="edition" th:text="#{book.edition}">Edition</label>
-								<input type="text" id="edition" class="form-control" th:field="*{edition}" placeholder="Enter book edition.">
+								<input type="text" id="edition" class="form-control" th:field="*{edition}" placeholder="Enter book edition." th:classappend="${#fields.hasErrors('edition') ? 'is-invalid' : ''}">
+								<span class="invalid-feedback" th:if="${#fields.hasErrors('edition')}" th:errors="*{edition}" style="color: red;"></span>
 							</div>
 							<div class="form-group">
 								<label for="description" th:text="#{book.description}">Description</label>
-								<textarea rows="2" cols="" class="form-control" id="description" th:field="*{description}" placeholder=""></textarea>
+								<textarea rows="2" cols="" class="form-control" id="description" th:field="*{description}" placeholder="" th:classappend="${#fields.hasErrors('description') ? 'is-invalid' : ''}"></textarea>
+								<span class="invalid-feedback" th:if="${#fields.hasErrors('description')}" th:errors="*{description}" style="color: red;"></span>
 							</div>
 							<div class="form-group">
 								<label for="category" th:text="#{book.category}">Category</label>

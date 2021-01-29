@@ -49,7 +49,7 @@ public class BookController {
 	}
 
 	@GetMapping("/create")
-	public String createBook(Book book, Model model) {
+	public String createBook(Book book) {
 		return "book/create";
 	}
 
