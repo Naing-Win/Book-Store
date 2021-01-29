@@ -78,7 +78,6 @@ public class BookController {
 		Book bk = bookService.findById(id).orElseThrow(() -> new ResourceNotFoundException());
 		bk.setId(book.getId());
 		bk.setCategory(book.getCategory());
-		//bk.setAuthor(book.getAuthor());
 		bk.setDescription(book.getDescription());
 		bk.setEdition(book.getEdition());
 		bk.setTitle(book.getTitle());
@@ -110,34 +109,4 @@ public class BookController {
 		redirectAttributes.addFlashAttribute("message", "Book with ID " + id + " has been deleted.");
 		return "redirect:/";
 	}
-	
-	/*
-	@GetMapping("/addAuthorBook/{id}")
-	public String addAuthor(@PathVariable("id") long id, Model model){
-
-		model.addAttribute("authors", authorService.findAllAuthor());
-		model.addAttribute("book", bookService.findById(id).get());
-		return "authorbook/add-author-book";
-	}
-
-	/*
-	@GetMapping("/book/{id}/authors")
-	public String addAuthorAndBook(@RequestParam(value="action", required=true) String action, @PathVariable Long bookId, @RequestParam Long authorId, Model model) {
-		//Optional<Course> course = courseService.getCourseById(courseId);
-		//Optional<Student> student = studentService.getStudentById(id);
-		Optional<Book> book = bookService.findById(bookId);
-		Optional<Author> author = authorService.getAuthorById(authorId);
-		if(book.isPresent() && action.equalsIgnoreCase("save")) {
-			if(!book.get().hasAuthor(author.get())) {
-				book.get().getAuthors().add(author.get());
-			}
-			bookService.save(book.get());
-			model.addAttribute("book", bookService.findById(bookId));
-			model.addAttribute("authors", authorService.findAllAuthor());
-			return "redirect:/books";
-		}
-		return "redirect:/books";
-	}
-	*/
-
 }
